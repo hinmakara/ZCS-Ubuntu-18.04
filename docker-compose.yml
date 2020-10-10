@@ -1,0 +1,20 @@
+version: '3.3'
+services:
+  zimbra:
+    image: hinmakara/queenco-zcs-8.8.15_ga_3968_ubuntu-18.04
+    hostname: mail.queencoasia.com
+    command: >
+      bash -c "/services.sh && init"
+    ports:
+      - "25:25"
+      - "443:443"
+      - "465:465"
+      - "587:587"
+      - "993:993"
+      - "995:995"
+      - "7071:7071"
+    volumes:
+      - ./resolv.conf:/etc/resolv.conf
+      - /srv/zimbra:/opt/zimbra
+      #- /etc/letsencrypt/live/localmail.queencoasia.com:/opt/zimbra/ssl/letsencrypt
+
